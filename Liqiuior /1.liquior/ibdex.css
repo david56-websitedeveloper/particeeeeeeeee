@@ -64,6 +64,11 @@ body{
     border-radius: 20px;
     border: none;
   background: rgb(56, 56, 168);
+    flex: 1;
+    right: 10%;
+    
+    position: absolute;
+ 
   color: white;
   font-weight: bold;
 }
@@ -148,13 +153,13 @@ color: #757a80;
 }
 
 .main-hero{
-    background: linear-gradient(135deg, #DEE2FF, #CBC0D3);
+    /* background: linear-gradient(135deg, #DEE2FF, #CBC0D3); */
  
 }
 
 .hero-containe{
       display: flex;
-         margin: 0 10px 20px 10px;
+         margin: 0 10px 4px 10px;
   padding: 25px;
   height: 440px;
 }
@@ -164,23 +169,42 @@ color: #757a80;
 }
 
 .img img{
-    width: 500px;
-    height: 350px;
-    position: relative;
-   left: 95%;
+    width: 700px;
+    height: 420px;
+    position: absolute;
+    bottom: 7%;
+  /* flex: 1; */
+right: 0;
+  /* margin: right; */
    z-index: 100;
+   margin: 5px;
+   box-shadow: 0 0 0.5rem blue;
 
 }
 
 .her-text{
-    margin-top: 15%;
+    margin-top: 7%;
+    color: #f8f8f8;
+    text-shadow: 0 0 0.5rem rgb(53, 141, 255);
+    font-size: 22px;
    /* position: relative; */
    /* top: 40%; */
 }
 
+
+
+p{
+width: 600px;
+font-size: 14px;
+margin: 3px;
+ text-shadow: 0 0 0.5rem rgb(91, 102, 117);
+}
+
 .her-text h3{
-    padding: 0px 22px 10px 30px;
-    margin: 10px;
+    padding: 0px 18px 4px 5px;
+    margin: 2px;
+   
+
 }
 
 /* .section-box{ */
@@ -188,27 +212,54 @@ color: #757a80;
 
 /* } */
 
+.section-box{
+    margin: 2px;
+   
+}
+
 .section-box .section{
     display: flex;
    justify-content: center;
+ 
    /* padding: 10px; */
 }
 
-.section .box{
+.section{
+    /* background-color: #757a80; */
+    padding: 2px;
+    margin: 1px;
+    color: black;
+}
+
+ .box{
     margin: 10px;
-    background-color: #CBC0D3;
+     background-color: #CBC0D3;
     padding: 10px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     position: relative;
-    bottom: 120px;
+    bottom: 40px;
     height: 200px;
     width: 300px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 20px;
     z-index: 100;
+
+    box-shadow: 0 0 2rem rgb(4, 2, 119);
     /* align-items: center; */
 }
 
-.box p{
-    margin: 20%;
+.bx{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+    /* color: rgb(235, 6, 6); */
+}
+
+.txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   padding-bottom: 25px;
+   color: white;
 }
