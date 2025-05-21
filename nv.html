@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoozeDeliver - Liquor Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            /* padding-top: 120px; Space for sticky header */
+        }
+        
+        /* Utility Bar */
+        .utility-bar {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .utility-items {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .utility-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .utility-item i {
+            font-size: 12px;
+        }
+        
+        /* Main Navigation */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 40px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #f39c12;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .main-nav a:hover {
+            color: #f39c12;
+        }
+        
+        .main-nav a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #f39c12;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+           
+        }
+        
+        .dropbtn {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #f39c12;
+        }
+        
+        /* User Navigation */
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            width: 200px;
+            font-size: 14px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .cart-icon, .account-btn {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 16px;
+        }
+        
+        .cart-count {
+            background-color: #f39c12;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Mega Menu */
+        .mega-menu {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            /* max-width: 1050px; */
+            margin: 10px;
+            padding: 0 200px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .dropdown:hover .mega-menu {
+            display: flex;
+        }
+        
+        .mega-menu-column {
+            flex: 1;
+            padding: 0 40px;
+            /* margin-right: 10px; */
+        }
+        
+        .mega-menu-column h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .mega-menu-column ul {
+            list-style: none;
+        }
+        
+        .mega-menu-column li {
+            margin-bottom: 8px;
+        }
+        
+        .mega-menu-column a {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .mega-menu-column a:hover {
+            color: #f39c12;
+        }
+        
+        .menu-promo {
+            margin-top: 20px;
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .menu-promo img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-promo button {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .brand-grid img {
+            width: 100%;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        
+        .brand-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Floating Mobile Menu */
+        .floating-mobile-menu {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+        
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            font-size: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .float-btn .count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .main-nav, .user-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .floating-mobile-menu {
+                display: block;
+            }
+            
+            .utility-items {
+                font-size: 12px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <div class="utility-items">
+            <div class="utility-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Deliver to: <select>
+                    <option>New York</option>
+                    <option>Los Angeles</option>
+                    <option>Chicago</option>
+                </select></span>
+            </div>
+            <div class="utility-item">
+                <i class="fas fa-clock"></i>
+                <span>Delivery Time: <select>
+                    <option>ASAP (30-45 min)</option>
+                    <option>Schedule for later</option>
+                </select></span>
+            </div>
+        </div>
+        <div class="utility-items">
+            <div class="utility-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>24/7 Support</span>
+            </div>
+            <div class="utility-item">
+                
+                <span>Age Verified</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <header>
+        <nav>
+            <div class="logo">BoozeDeliver</div>
+            
+            <div class="main-nav">
+                <a href="/">Home</a>
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Shop</button>
+                    <div class="mega-menu">
+                        <div class="mega-menu-column">
+                            <h4>Whiskey</h4>
+                            <ul>
+                                <li><a href="/scotch">Scotch Whiskey</a></li>
+                                <li><a href="/bourbon">Bourbon</a></li>
+                                <li><a href="/irish">Irish Whiskey</a></li>
+                                <li><a href="/japanese">Japanese Whiskey</a></li>
+                            </ul>
+                            <div class="menu-promo">
+                                <img src="https://via.placeholder.com/200x100?text=Whiskey+Special" alt="Whiskey Special">
+                                <button>Limited Edition Collection</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mega-menu-column">
+                            <h4>Wine</h4>
+                            <ul>
+                                <li><a href="/red-wine">Red Wine</a></li>
+                                <li><a href="/white-wine">White Wine</a></li>
+                                <li><a href="/rose">Rosé</a></li>
+                                <li><a href="/sparkling">Sparkling</a></li>
+                            </ul>
+                            <h4>Beer & Cider</h4>
+                            <ul>
+                                <li><a href="/ipa">IPA</a></li>
+                                <li><a href="/lager">Lager</a></li>
+                                <li><a href="/craft">Craft Beer</a></li>
+                                <li><a href="/cider">Cider</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mega-menu-column">
+                            <h4>Featured Brands</h4>
+                            <div class="brand-grid">
+                                <a href="/brand/johnnie-walker"><img src="https://via.placeholder.com/80x40?text=Johnnie+Walker" alt="Johnnie Walker"></a>
+                                <a href="/brand/jack-daniels"><img src="https://via.placeholder.com/80x40?text=Jack+Daniels" alt="Jack Daniels"></a>
+                                <a href="/brand/absolut"><img src="https://via.placeholder.com/80x40?text=Absolut" alt="Absolut"></a>
+                                <a href="/brand/moet"><img src="https://via.placeholder.com/80x40?text=Moët" alt="Moët"></a>
+                            </div>
+                            
+                            <h4>Special Offers</h4>
+                            <ul>
+                                <li><a href="/happy-hour">Happy Hour Deals</a></li>
+                                <li><a href="/bundles">Bundle Offers</a></li>
+                                <li><a href="/limited">Limited Editions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="/deals">Deals</a>
+                <a href="/how-it-works">How It Works</a>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+            </div>
+            
+            <div class="user-nav">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="/account" class="account-btn"><i class="fas fa-user"></i> Account</a>
+                <a href="/cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">3</span></a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Floating Mobile Menu -->
+    <div class="floating-mobile-menu">
+        <button class="float-btn home">🏠</button>
+        <button class="float-btn search">🔍</button>
+        <button class="float-btn cart">🛒 <span class="count">3</span></button>
+    </div>
+    
+    <!-- Main Content would go here -->
+    <main style="padding: 20px; max-width: 1400px; margin: 0 auto;">
+        <h1>Welcome to BoozeDeliver</h1>
+        <p>Your premium liquor delivery service</p>
+    </main>
+    
+    <script>
+        // JavaScript for mobile menu toggle would go here
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            // This would toggle a mobile menu overlay
+            alert('Mobile menu would open here in a full implementation');
+        });
+        
+        // Floating buttons functionality
+        document.querySelector('.float-btn.home').addEventListener('click', function() {
+            window.location.href = '/';
+        });
+        
+        document.querySelector('.float-btn.search').addEventListener('click', function() {
+            document.querySelector('.search-bar input').focus();
+        });
+        
+        document.querySelector('.float-btn.cart').addEventListener('click', function() {
+            window.location.href = '/cart';
+        });
+    </script>
+</body>
+</html>

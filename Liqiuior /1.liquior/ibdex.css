@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  
+}
+
+:root{
+    --primary: #f8f8f8;
+    /* --secondary:; */
+}
+
+body{
+    background: linear-gradient(150deg, #10233a, #020e49);
+    width: 100%;
+    height: 100vh;
+}
+
+.bar{
+    width: 100%;
+    height: 50px;
+    background: transparent ;
+    box-shadow: 0 0 0.5rem white;
+    /* position: fixed; */
+}
+
+.main-bar{
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.deleivery-place{
+    color: white;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+
+
+ .deleivery-place .fas{
+    font-size: 22px;
+    margin: 5px;
+    font-weight: bold;
+ }
+
+ .deleivery-place span{
+    color:  #f8f8f8;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+ }
+
+.deleivery-place span:active{
+     color: rgb(0, 224, 213);
+}
+
+.deleivery-place select{
+    padding: 6px;
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+  background: rgb(56, 56, 168);
+  color: white;
+  font-weight: bold;
+}
+
+.deleivery-place select:hover{
+    border: 0.7px solid rgb(188, 188, 224);
+}
+
+.deleivery-place option{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+
+}
+
+.deleivery-support{
+    display: flex;
+padding-left: 300px;
+gap: 1rem;
+color: whitesmoke;
+}
+
+.deleivery-support .support:hover{
+    color: rgb(0, 255, 242);
+    cursor: pointer;
+}
+
+.text{
+    color: rgb(255, 94, 0);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.nav-sontainer{
+   background-color: transparent;
+   margin: 3px 0 2px;
+   color: white;
+   padding: 10px;
+    box-shadow: 0 0 0.2rem white;
+    /* position: fixed; */
+}
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 2px;
+}
+
+.nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+   
+}
+.nav a{
+   margin-right: 40px;
+    color: antiquewhite;
+    text-decoration: none;
+    text-shadow: #0063db;
+    font-weight: 800;
+}
+
+.nav a:hover{
+color: #0a6ee9;
+
+}
+
+.nav a::after{
+color: #757a80;
+
+}
+
+.nav a select{
+      padding: 3px;
+    margin: 2px;
+    border-radius: 20px;
+    border: none;
+  background: rgb(56, 56, 168);
+  color: white;
+  font-weight: bold;
+}
+
+.main-hero{
+    background: linear-gradient(135deg, #DEE2FF, #CBC0D3);
+ 
+}
+
+.hero-containe{
+      display: flex;
+         margin: 0 10px 20px 10px;
+  padding: 25px;
+  height: 440px;
+}
+
+.img{
+    margin: 5px;
+}
+
+.img img{
+    width: 500px;
+    height: 350px;
+    position: relative;
+   left: 95%;
+   z-index: 100;
+
+}
+
+.her-text{
+    margin-top: 15%;
+   /* position: relative; */
+   /* top: 40%; */
+}
+
+.her-text h3{
+    padding: 0px 22px 10px 30px;
+    margin: 10px;
+}
+
+/* .section-box{ */
+    /* margin: 5px; */
+
+/* } */
+
+.section-box .section{
+    display: flex;
+   justify-content: center;
+   /* padding: 10px; */
+}
+
+.section .box{
+    margin: 10px;
+    background-color: #CBC0D3;
+    padding: 10px;
+    justify-content: space-between;
+    position: relative;
+    bottom: 120px;
+    height: 200px;
+    width: 300px;
+    text-align: center;
+    border-radius: 20px;
+    z-index: 100;
+    /* align-items: center; */
+}
+
+.box p{
+    margin: 20%;
+}
